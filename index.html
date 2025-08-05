@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding Electricity: Interactive Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 8px;
+        }
+        section {
+            margin: 20px 0;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #007bff;
+        }
+        .diagram {
+            text-align: center;
+            margin: 20px 0;
+        }
+        #ohms-law-calculator {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .simulation {
+            position: relative;
+            height: 200px;
+            background-color: #e9ecef;
+            border: 1px solid #ced4da;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .electron {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            animation: move-electron 2s linear infinite;
+        }
+        @keyframes move-electron {
+            0% { left: 0; }
+            100% { left: calc(100% - 10px); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Understanding Electricity: An Interactive Guide</h1>
+        <p>Explore the basics of electricity through explanations, diagrams, and interactive tools.</p>
+    </header>
+
+    <section id="introduction">
+        <h2>What is Electricity?</h2>
+        <p>Electricity is the flow of electric charge, typically carried by electrons in a conductor like a wire. It powers our homes, devices, and much of modern life.</p>
+        <p>At its core, electricity involves the movement of electrons, which are negatively charged particles in atoms. When electrons move from one place to another, they create an electric current.</p>
+        <div class="diagram">
+            <!-- Simple SVG diagram of an atom -->
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="none" />
+                <circle cx="100" cy="100" r="20" fill="blue" />
+                <text x="100" y="105" text-anchor="middle" fill="white">Nucleus</text>
+                <circle cx="150" cy="100" r="5" fill="red" />
+                <text x="150" y="90" text-anchor="middle">Electron</text>
+            </svg>
+            <p>Diagram: Basic Atom Structure (Nucleus with orbiting electron)</p>
+        </div>
+    </section>
+
+    <section id="basic-concepts">
+        <h2>Basic Concepts</h2>
+        <ul>
+            <li><strong>Electric Charge:</strong> Property of matter that causes it to experience force in an electromagnetic field. Electrons have negative charge.</li>
+            <li><strong>Current (I):</strong> The rate of flow of electric charge, measured in Amperes (A).</li>
+            <li><strong>Voltage (V):</strong> The electric potential difference, like "pressure" pushing the current, measured in Volts (V).</li>
+            <li><strong>Resistance (R):</strong> Opposition to the flow of current, measured in Ohms (Ω).</li>
+        </ul>
+        <div class="diagram">
+            <!-- SVG for a simple circuit -->
+            <svg width="300" height="100" viewBox="0 0 300 100">
+                <line x1="50" y1="50" x2="250" y2="50" stroke="black" stroke-width="2" />
+                <rect x="100" y="30" width="40" height="40" fill="none" stroke="black" />
+                <text x="120" y="55" text-anchor="middle">Battery</text>
+                <circle cx="200" cy="50" r="20" fill="none" stroke="black" />
+                <text x="200" y="55" text-anchor="middle">Lamp</text>
+            </svg>
+            <p>Diagram: Simple Circuit (Battery connected to a Lamp)</p>
+        </div>
+    </section>
+
+    <section id="ohms-law">
+        <h2>Ohm's Law</h2>
+        <p>Ohm's Law states that the current (I) through a conductor is directly proportional to the voltage (V) across it and inversely proportional to the resistance (R): <strong>I = V / R</strong>.</p>
+        <div id="ohms-law-calculator">
+            <h3>Ohm's Law Calculator</h3>
+            <label for="voltage">Voltage (V):</label>
+            <input type="number" id="voltage" placeholder="Enter voltage in volts">
+            
+            <label for="resistance">Resistance (R):</label>
+            <input type="number" id="resistance" placeholder="Enter resistance in ohms">
+            
+            <button onclick="calculateCurrent()">Calculate Current</button>
+            
+            <div id="result"></div>
+        </div>
+    </section>
+
+    <section id="circuits">
+        <h2>Types of Circuits</h2>
+        <p><strong>Series Circuit:</strong> Components connected end-to-end; current is the same through all, but voltage divides.</p>
+        <p><strong>Parallel Circuit:</strong> Components connected across the same voltage; voltage is the same, but current divides.</p>
+        <div class="diagram">
+            <!-- SVG for series circuit -->
+            <svg width="300" height="100" viewBox="0 0 300 100">
+                <line x1="50" y1="50" x2="100" y2="50" stroke="black" stroke-width="2" />
+                <circle cx="125" cy="50" r="20" fill="none" stroke="black" />
+                <circle cx="175" cy="50" r="20" fill="none" stroke="black" />
+                <line x1="150" y1="50" x2="200" y2="50" stroke="black" stroke-width="2" />
+                <line x1="200" y1="50" x2="250" y2="50" stroke="black" stroke-width="2" />
+            </svg>
+            <p>Diagram: Series Circuit (Two lamps in series)</p>
+        </div>
+    </section>
+
+    <section id="simulation">
+        <h2>Simple Electron Flow Simulation</h2>
+        <p>Watch electrons (red dots) flowing through a wire, representing electric current.</p>
+        <div class="simulation">
+            <div class="electron" style="top: 20px; animation-delay: 0s;"></div>
+            <div class="electron" style="top: 50px; animation-delay: 0.5s;"></div>
+            <div class="electron" style="top: 80px; animation-delay: 1s;"></div>
+            <div class="electron" style="top: 110px; animation-delay: 1.5s;"></div>
+            <div class="electron" style="top: 140px; animation-delay: 0.2s;"></div>
+        </div>
+    </section>
+
+    <script>
+        function calculateCurrent() {
+            const voltage = parseFloat(document.getElementById('voltage').value);
+            const resistance = parseFloat(document.getElementById('resistance').value);
+            if (isNaN(voltage) || isNaN(resistance) || resistance === 0) {
+                document.getElementById('result').innerText = 'Please enter valid voltage and resistance (resistance cannot be zero).';
+                return;
+            }
+            const current = voltage / resistance;
+            document.getElementById('result').innerText = `Current (I) = ${current.toFixed(2)} Amperes`;
+        }
+    </script>
+</body>
+</html>
