@@ -85,22 +85,30 @@
             0% { left: 0; }
             100% { left: calc(100% - 10px); }
         }
+        #language-selector {
+            text-align: center;
+            margin-bottom: 10px;
+        }
         #language-select {
-            position: absolute;
-            top: 20px;
-            right: 20px;
             padding: 5px;
+            font-size: 16px;
+        }
+        svg text {
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1 data-en="Understanding Electricity: An Interactive Guide" data-de="Elektrizität Verstehen: Ein Interaktiver Leitfaden">Understanding Electricity: An Interactive Guide</h1>
-        <p data-en="Explore the basics of electricity through explanations, diagrams, and interactive tools." data-de="Erkunden Sie die Grundlagen der Elektrizität durch Erklärungen, Diagramme und interaktive Tools.">Explore the basics of electricity through explanations, diagrams, and interactive tools.</p>
+    <div id="language-selector">
         <select id="language-select" onchange="changeLanguage(this.value)">
             <option value="en">English</option>
             <option value="de">Deutsch</option>
         </select>
+    </div>
+
+    <header>
+        <h1 data-en="Understanding Electricity: An Interactive Guide" data-de="Elektrizität Verstehen: Ein Interaktiver Leitfaden">Understanding Electricity: An Interactive Guide</h1>
+        <p data-en="Explore the basics of electricity through explanations, diagrams, and interactive tools." data-de="Erkunden Sie die Grundlagen der Elektrizität durch Erklärungen, Diagramme und interaktive Tools.">Explore the basics of electricity through explanations, diagrams, and interactive tools.</p>
     </header>
 
     <section id="introduction">
@@ -108,15 +116,15 @@
         <p data-en="Electricity is the flow of electric charge, typically carried by electrons in a conductor like a wire. It powers our homes, devices, and much of modern life." data-de="Elektrizität ist der Fluss elektrischer Ladung, typischerweise getragen von Elektronen in einem Leiter wie einem Draht. Sie versorgt unsere Häuser, Geräte und vieles im modernen Leben.">Electricity is the flow of electric charge, typically carried by electrons in a conductor like a wire. It powers our homes, devices, and much of modern life.</p>
         <p data-en="At its core, electricity involves the movement of electrons, which are negatively charged particles in atoms. When electrons move from one place to another, they create an electric current." data-de="Im Kern geht es bei Elektrizität um die Bewegung von Elektronen, die negativ geladene Teilchen in Atomen sind. Wenn Elektronen von einem Ort zum anderen bewegen, erzeugen sie einen elektrischen Strom.">At its core, electricity involves the movement of electrons, which are negatively charged particles in atoms. When electrons move from one place to another, they create an electric current.</p>
         <div class="diagram">
-            <!-- Improved SVG diagram of an atom with labels -->
-            <svg width="200" height="200" viewBox="0 0 200 200">
-                <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="none" />
-                <circle cx="100" cy="100" r="20" fill="blue" />
-                <text x="100" y="105" text-anchor="middle" fill="white" data-en="Nucleus (Protons + Neutrons)" data-de="Kern (Protonen + Neutronen)">Nucleus (Protons + Neutrons)</text>
-                <circle cx="150" cy="100" r="5" fill="red" />
-                <text x="150" y="90" text-anchor="middle" data-en="Electron (Negative Charge)" data-de="Elektron (Negative Ladung)">Electron (Negative Charge)</text>
-                <path d="M100 100 Q 150 50 150 100 Q 150 150 100 100" stroke="dashed" stroke-width="1" fill="none" />
-                <text x="175" y="50" text-anchor="middle" data-en="Orbit" data-de="Orbit">Orbit</text>
+            <!-- Improved SVG diagram of an atom: larger size, more spaced out -->
+            <svg width="400" height="400" viewBox="0 0 400 400">
+                <circle cx="200" cy="200" r="160" stroke="black" stroke-width="2" fill="none" />
+                <circle cx="200" cy="200" r="40" fill="blue" />
+                <text x="200" y="205" text-anchor="middle" fill="white" data-en="Nucleus (Protons + Neutrons)" data-de="Kern (Protonen + Neutronen)">Nucleus (Protons + Neutrons)</text>
+                <circle cx="350" cy="200" r="10" fill="red" />
+                <text x="350" y="180" text-anchor="middle" data-en="Electron (Negative Charge)" data-de="Elektron (Negative Ladung)">Electron (Negative Charge)</text>
+                <path d="M200 200 Q 350 100 350 200 Q 350 300 200 200" stroke="dashed" stroke-width="2" fill="none" />
+                <text x="370" y="100" text-anchor="middle" data-en="Orbit" data-de="Orbit">Orbit</text>
             </svg>
             <p data-en="Diagram: Basic Atom Structure (Nucleus with orbiting electron)" data-de="Diagramm: Grundlegende Atomstruktur (Kern mit umkreisendem Elektron)">Diagram: Basic Atom Structure (Nucleus with orbiting electron)</p>
         </div>
@@ -131,17 +139,17 @@
             <li data-en="<strong>Resistance (R):</strong> Opposition to the flow of current, measured in Ohms (Ω)." data-de="<strong>Widerstand (R):</strong> Widerstand gegen den Fluss des Stroms, gemessen in Ohm (Ω)."><strong>Resistance (R):</strong> Opposition to the flow of current, measured in Ohms (Ω).</li>
         </ul>
         <div class="diagram">
-            <!-- Improved SVG for a simple circuit with labels -->
-            <svg width="300" height="100" viewBox="0 0 300 100">
-                <line x1="50" y1="50" x2="100" y2="50" stroke="black" stroke-width="2" />
-                <rect x="100" y="30" width="40" height="40" fill="none" stroke="black" />
-                <text x="120" y="55" text-anchor="middle" data-en="Battery (Voltage Source)" data-de="Batterie (Spannungsquelle)">Battery (Voltage Source)</text>
-                <line x1="140" y1="50" x2="160" y2="50" stroke="black" stroke-width="2" />
-                <circle cx="200" cy="50" r="20" fill="none" stroke="black" />
-                <text x="200" y="55" text-anchor="middle" data-en="Lamp (Resistor)" data-de="Lampe (Widerstand)">Lamp (Resistor)</text>
-                <line x1="220" y1="50" x2="250" y2="50" stroke="black" stroke-width="2" />
-                <path d="M240 40 L250 50 L240 60" fill="none" stroke="black" stroke-width="2" />
-                <text x="150" y="20" text-anchor="middle" data-en="Current Flow" data-de="Stromfluss">Current Flow</text>
+            <!-- Improved SVG for a simple circuit: larger size, more spaced out -->
+            <svg width="500" height="200" viewBox="0 0 500 200">
+                <line x1="50" y1="100" x2="150" y2="100" stroke="black" stroke-width="2" />
+                <rect x="150" y="70" width="80" height="60" fill="none" stroke="black" />
+                <text x="190" y="105" text-anchor="middle" data-en="Battery (Voltage Source)" data-de="Batterie (Spannungsquelle)">Battery (Voltage Source)</text>
+                <line x1="230" y1="100" x2="300" y2="100" stroke="black" stroke-width="2" />
+                <circle cx="375" cy="100" r="40" fill="none" stroke="black" />
+                <text x="375" y="105" text-anchor="middle" data-en="Lamp (Resistor)" data-de="Lampe (Widerstand)">Lamp (Resistor)</text>
+                <line x1="415" y1="100" x2="450" y2="100" stroke="black" stroke-width="2" />
+                <path d="M430 85 L450 100 L430 115" fill="none" stroke="black" stroke-width="2" />
+                <text x="250" y="50" text-anchor="middle" data-en="Current Flow" data-de="Stromfluss">Current Flow</text>
             </svg>
             <p data-en="Diagram: Simple Circuit (Battery connected to a Lamp)" data-de="Diagramm: Einfacher Schaltkreis (Batterie an eine Lampe angeschlossen)">Diagram: Simple Circuit (Battery connected to a Lamp)</p>
         </div>
