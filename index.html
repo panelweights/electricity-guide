@@ -18,6 +18,24 @@
             background-color: #007bff;
             color: white;
             border-radius: 8px;
+            position: relative;
+        }
+        .language-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .language-buttons button {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .language-buttons button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
         section {
             margin: 20px 0;
@@ -85,28 +103,18 @@
             0% { left: 0; }
             100% { left: calc(100% - 10px); }
         }
-        #language-selector {
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        #language-select {
-            padding: 5px;
-            font-size: 16px;
-        }
         svg text {
-            font-size: 14px;
+            font-size: 16px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div id="language-selector">
-        <select id="language-select" onchange="changeLanguage(this.value)">
-            <option value="en">English</option>
-            <option value="de">Deutsch</option>
-        </select>
-    </div>
-
     <header>
+        <div class="language-buttons">
+            <button onclick="changeLanguage('en')">English</button>
+            <button onclick="changeLanguage('de')">Deutsch</button>
+        </div>
         <h1 data-en="Understanding Electricity: An Interactive Guide" data-de="Elektrizität Verstehen: Ein Interaktiver Leitfaden">Understanding Electricity: An Interactive Guide</h1>
         <p data-en="Explore the basics of electricity through explanations, diagrams, and interactive tools." data-de="Erkunden Sie die Grundlagen der Elektrizität durch Erklärungen, Diagramme und interaktive Tools.">Explore the basics of electricity through explanations, diagrams, and interactive tools.</p>
     </header>
@@ -116,13 +124,19 @@
         <p data-en="Electricity is the flow of electric charge, typically carried by electrons in a conductor like a wire. It powers our homes, devices, and much of modern life." data-de="Elektrizität ist der Fluss elektrischer Ladung, typischerweise getragen von Elektronen in einem Leiter wie einem Draht. Sie versorgt unsere Häuser, Geräte und vieles im modernen Leben.">Electricity is the flow of electric charge, typically carried by electrons in a conductor like a wire. It powers our homes, devices, and much of modern life.</p>
         <p data-en="At its core, electricity involves the movement of electrons, which are negatively charged particles in atoms. When electrons move from one place to another, they create an electric current." data-de="Im Kern geht es bei Elektrizität um die Bewegung von Elektronen, die negativ geladene Teilchen in Atomen sind. Wenn Elektronen von einem Ort zum anderen bewegen, erzeugen sie einen elektrischen Strom.">At its core, electricity involves the movement of electrons, which are negatively charged particles in atoms. When electrons move from one place to another, they create an electric current.</p>
         <div class="diagram">
-            <!-- Improved SVG diagram of an atom: larger size, more spaced out -->
+            <!-- Further improved SVG diagram of an atom: lighter nucleus color, multi-line labels for better readability, larger font via CSS -->
             <svg width="400" height="400" viewBox="0 0 400 400">
                 <circle cx="200" cy="200" r="160" stroke="black" stroke-width="2" fill="none" />
-                <circle cx="200" cy="200" r="40" fill="blue" />
-                <text x="200" y="205" text-anchor="middle" fill="white" data-en="Nucleus (Protons + Neutrons)" data-de="Kern (Protonen + Neutronen)">Nucleus (Protons + Neutrons)</text>
+                <circle cx="200" cy="200" r="40" fill="#66a3ff" /> <!-- Lighter blue for better contrast -->
+                <text x="200" y="190" text-anchor="middle" fill="black" font-weight="bold">
+                    <tspan x="200" dy="0" data-en="Nucleus" data-de="Kern">Nucleus</tspan>
+                    <tspan x="200" dy="1.2em" data-en="(Protons + Neutrons)" data-de="(Protonen + Neutronen)">(Protons + Neutrons)</tspan>
+                </text>
                 <circle cx="350" cy="200" r="10" fill="red" />
-                <text x="350" y="180" text-anchor="middle" data-en="Electron (Negative Charge)" data-de="Elektron (Negative Ladung)">Electron (Negative Charge)</text>
+                <text x="350" y="165" text-anchor="middle" fill="black" font-weight="bold">
+                    <tspan x="350" dy="0" data-en="Electron" data-de="Elektron">Electron</tspan>
+                    <tspan x="350" dy="1.2em" data-en="(Negative Charge)" data-de="(Negative Ladung)">(Negative Charge)</tspan>
+                </text>
                 <path d="M200 200 Q 350 100 350 200 Q 350 300 200 200" stroke="dashed" stroke-width="2" fill="none" />
                 <text x="370" y="100" text-anchor="middle" data-en="Orbit" data-de="Orbit">Orbit</text>
             </svg>
@@ -256,7 +270,11 @@
     <script>
         function changeLanguage(lang) {
             document.querySelectorAll('[data-en], [data-de]').forEach(el => {
-                el.innerHTML = el.getAttribute(`data-${lang}`) || el.innerHTML;
+                if (el.tagName.toLowerCase() === 'tspan') {
+                    el.textContent = el.getAttribute(`data-${lang}`) || el.textContent;
+                } else {
+                    el.innerHTML = el.getAttribute(`data-${lang}`) || el.innerHTML;
+                }
             });
             // Update select options
             document.querySelectorAll('#calculate-what option').forEach(opt => {
@@ -269,7 +287,7 @@
 
         function updateInputs() {
             const calcWhat = document.getElementById('calculate-what').value;
-            const lang = document.getElementById('language-select').value;
+            const lang = document.querySelector('.language-buttons button[onclick*="\'en\'"]').textContent === 'English' ? 'en' : 'de'; // Detect current lang roughly
             const voltageLabel = document.querySelector('label[for="voltage"]');
             const resistanceLabel = document.querySelector('label[for="resistance"]');
             const currentLabel = document.querySelector('label[for="current"]');
@@ -303,7 +321,7 @@
 
         function calculateOhmsLaw() {
             const calcWhat = document.getElementById('calculate-what').value;
-            const lang = document.getElementById('language-select').value;
+            const lang = document.querySelector('.language-buttons button[onclick*="\'en\'"]').textContent === 'English' ? 'en' : 'de'; // Detect current lang
             let resultText = '';
             let errorMsg = lang === 'en' ? 'Please enter valid numbers (cannot be zero where division occurs).' : 'Bitte gültige Zahlen eingeben (kann nicht null sein, wo Division stattfindet).';
 
