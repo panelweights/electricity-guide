@@ -85,89 +85,157 @@
             0% { left: 0; }
             100% { left: calc(100% - 10px); }
         }
+        #language-select {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Understanding Electricity: An Interactive Guide</h1>
-        <p>Explore the basics of electricity through explanations, diagrams, and interactive tools.</p>
+        <h1 data-en="Understanding Electricity: An Interactive Guide" data-de="Elektrizität Verstehen: Ein Interaktiver Leitfaden">Understanding Electricity: An Interactive Guide</h1>
+        <p data-en="Explore the basics of electricity through explanations, diagrams, and interactive tools." data-de="Erkunden Sie die Grundlagen der Elektrizität durch Erklärungen, Diagramme und interaktive Tools.">Explore the basics of electricity through explanations, diagrams, and interactive tools.</p>
+        <select id="language-select" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="de">Deutsch</option>
+        </select>
     </header>
 
     <section id="introduction">
-        <h2>What is Electricity?</h2>
-        <p>Electricity is the flow of electric charge, typically carried by electrons in a conductor like a wire. It powers our homes, devices, and much of modern life.</p>
-        <p>At its core, electricity involves the movement of electrons, which are negatively charged particles in atoms. When electrons move from one place to another, they create an electric current.</p>
+        <h2 data-en="What is Electricity?" data-de="Was ist Elektrizität?">What is Electricity?</h2>
+        <p data-en="Electricity is the flow of electric charge, typically carried by electrons in a conductor like a wire. It powers our homes, devices, and much of modern life." data-de="Elektrizität ist der Fluss elektrischer Ladung, typischerweise getragen von Elektronen in einem Leiter wie einem Draht. Sie versorgt unsere Häuser, Geräte und vieles im modernen Leben.">Electricity is the flow of electric charge, typically carried by electrons in a conductor like a wire. It powers our homes, devices, and much of modern life.</p>
+        <p data-en="At its core, electricity involves the movement of electrons, which are negatively charged particles in atoms. When electrons move from one place to another, they create an electric current." data-de="Im Kern geht es bei Elektrizität um die Bewegung von Elektronen, die negativ geladene Teilchen in Atomen sind. Wenn Elektronen von einem Ort zum anderen bewegen, erzeugen sie einen elektrischen Strom.">At its core, electricity involves the movement of electrons, which are negatively charged particles in atoms. When electrons move from one place to another, they create an electric current.</p>
         <div class="diagram">
-            <!-- Simple SVG diagram of an atom -->
+            <!-- Improved SVG diagram of an atom with labels -->
             <svg width="200" height="200" viewBox="0 0 200 200">
                 <circle cx="100" cy="100" r="80" stroke="black" stroke-width="2" fill="none" />
                 <circle cx="100" cy="100" r="20" fill="blue" />
-                <text x="100" y="105" text-anchor="middle" fill="white">Nucleus</text>
+                <text x="100" y="105" text-anchor="middle" fill="white" data-en="Nucleus (Protons + Neutrons)" data-de="Kern (Protonen + Neutronen)">Nucleus (Protons + Neutrons)</text>
                 <circle cx="150" cy="100" r="5" fill="red" />
-                <text x="150" y="90" text-anchor="middle">Electron</text>
+                <text x="150" y="90" text-anchor="middle" data-en="Electron (Negative Charge)" data-de="Elektron (Negative Ladung)">Electron (Negative Charge)</text>
+                <path d="M100 100 Q 150 50 150 100 Q 150 150 100 100" stroke="dashed" stroke-width="1" fill="none" />
+                <text x="175" y="50" text-anchor="middle" data-en="Orbit" data-de="Orbit">Orbit</text>
             </svg>
-            <p>Diagram: Basic Atom Structure (Nucleus with orbiting electron)</p>
+            <p data-en="Diagram: Basic Atom Structure (Nucleus with orbiting electron)" data-de="Diagramm: Grundlegende Atomstruktur (Kern mit umkreisendem Elektron)">Diagram: Basic Atom Structure (Nucleus with orbiting electron)</p>
         </div>
     </section>
 
     <section id="basic-concepts">
-        <h2>Basic Concepts</h2>
+        <h2 data-en="Basic Concepts" data-de="Grundlegende Konzepte">Basic Concepts</h2>
         <ul>
-            <li><strong>Electric Charge:</strong> Property of matter that causes it to experience force in an electromagnetic field. Electrons have negative charge.</li>
-            <li><strong>Current (I):</strong> The rate of flow of electric charge, measured in Amperes (A).</li>
-            <li><strong>Voltage (V):</strong> The electric potential difference, like "pressure" pushing the current, measured in Volts (V).</li>
-            <li><strong>Resistance (R):</strong> Opposition to the flow of current, measured in Ohms (Ω).</li>
+            <li data-en="<strong>Electric Charge:</strong> Property of matter that causes it to experience force in an electromagnetic field. Electrons have negative charge." data-de="<strong>Elektrische Ladung:</strong> Eigenschaft der Materie, die sie dazu bringt, Kraft in einem elektromagnetischen Feld zu erfahren. Elektronen haben negative Ladung."><strong>Electric Charge:</strong> Property of matter that causes it to experience force in an electromagnetic field. Electrons have negative charge.</li>
+            <li data-en="<strong>Current (I):</strong> The rate of flow of electric charge, measured in Amperes (A)." data-de="<strong>Strom (I):</strong> Die Rate des Flusses elektrischer Ladung, gemessen in Ampere (A)."><strong>Current (I):</strong> The rate of flow of electric charge, measured in Amperes (A).</li>
+            <li data-en="<strong>Voltage (V):</strong> The electric potential difference, like 'pressure' pushing the current, measured in Volts (V)." data-de="<strong>Spannung (V):</strong> Die elektrische Potentialdifferenz, wie 'Druck', der den Strom antreibt, gemessen in Volt (V)."><strong>Voltage (V):</strong> The electric potential difference, like "pressure" pushing the current, measured in Volts (V).</li>
+            <li data-en="<strong>Resistance (R):</strong> Opposition to the flow of current, measured in Ohms (Ω)." data-de="<strong>Widerstand (R):</strong> Widerstand gegen den Fluss des Stroms, gemessen in Ohm (Ω)."><strong>Resistance (R):</strong> Opposition to the flow of current, measured in Ohms (Ω).</li>
         </ul>
         <div class="diagram">
-            <!-- SVG for a simple circuit -->
+            <!-- Improved SVG for a simple circuit with labels -->
             <svg width="300" height="100" viewBox="0 0 300 100">
-                <line x1="50" y1="50" x2="250" y2="50" stroke="black" stroke-width="2" />
+                <line x1="50" y1="50" x2="100" y2="50" stroke="black" stroke-width="2" />
                 <rect x="100" y="30" width="40" height="40" fill="none" stroke="black" />
-                <text x="120" y="55" text-anchor="middle">Battery</text>
+                <text x="120" y="55" text-anchor="middle" data-en="Battery (Voltage Source)" data-de="Batterie (Spannungsquelle)">Battery (Voltage Source)</text>
+                <line x1="140" y1="50" x2="160" y2="50" stroke="black" stroke-width="2" />
                 <circle cx="200" cy="50" r="20" fill="none" stroke="black" />
-                <text x="200" y="55" text-anchor="middle">Lamp</text>
+                <text x="200" y="55" text-anchor="middle" data-en="Lamp (Resistor)" data-de="Lampe (Widerstand)">Lamp (Resistor)</text>
+                <line x1="220" y1="50" x2="250" y2="50" stroke="black" stroke-width="2" />
+                <path d="M240 40 L250 50 L240 60" fill="none" stroke="black" stroke-width="2" />
+                <text x="150" y="20" text-anchor="middle" data-en="Current Flow" data-de="Stromfluss">Current Flow</text>
             </svg>
-            <p>Diagram: Simple Circuit (Battery connected to a Lamp)</p>
+            <p data-en="Diagram: Simple Circuit (Battery connected to a Lamp)" data-de="Diagramm: Einfacher Schaltkreis (Batterie an eine Lampe angeschlossen)">Diagram: Simple Circuit (Battery connected to a Lamp)</p>
         </div>
     </section>
 
     <section id="ohms-law">
-        <h2>Ohm's Law</h2>
-        <p>Ohm's Law states that the current (I) through a conductor is directly proportional to the voltage (V) across it and inversely proportional to the resistance (R): <strong>I = V / R</strong>.</p>
+        <h2 data-en="Ohm's Law" data-de="Ohmsches Gesetz">Ohm's Law</h2>
+        <p data-en="Ohm's Law states that the current (I) through a conductor is directly proportional to the voltage (V) across it and inversely proportional to the resistance (R): <strong>I = V / R</strong>. It can also be rearranged to V = I * R or R = V / I." data-de="Das Ohmsche Gesetz besagt, dass der Strom (I) durch einen Leiter direkt proportional zur Spannung (V) darüber ist und umgekehrt proportional zum Widerstand (R): <strong>I = V / R</strong>. Es kann auch umgestellt werden zu V = I * R oder R = V / I.">Ohm's Law states that the current (I) through a conductor is directly proportional to the voltage (V) across it and inversely proportional to the resistance (R): <strong>I = V / R</strong>. It can also be rearranged to V = I * R or R = V / I.</p>
         <div id="ohms-law-calculator">
-            <h3>Ohm's Law Calculator</h3>
-            <label for="voltage">Voltage (V):</label>
-            <input type="number" id="voltage" placeholder="Enter voltage in volts">
+            <h3 data-en="Ohm's Law Calculator" data-de="Ohmsches Gesetz Rechner">Ohm's Law Calculator</h3>
+            <label data-en="Calculate:" data-de="Berechnen:">Calculate:</label>
+            <select id="calculate-what" onchange="updateInputs()">
+                <option value="current" data-en="Current (I)" data-de="Strom (I)">Current (I)</option>
+                <option value="voltage" data-en="Voltage (V)" data-de="Spannung (V)">Voltage (V)</option>
+                <option value="resistance" data-en="Resistance (R)" data-de="Widerstand (R)">Resistance (R)</option>
+            </select>
             
-            <label for="resistance">Resistance (R):</label>
-            <input type="number" id="resistance" placeholder="Enter resistance in ohms">
+            <div id="inputs">
+                <label for="voltage" data-en="Voltage (V):" data-de="Spannung (V):">Voltage (V):</label>
+                <input type="number" id="voltage" placeholder="Enter voltage in volts">
+                
+                <label for="resistance" data-en="Resistance (R):" data-de="Widerstand (R):">Resistance (R):</label>
+                <input type="number" id="resistance" placeholder="Enter resistance in ohms">
+                
+                <label for="current" data-en="Current (I):" data-de="Strom (I):" style="display: none;">Current (I):</label>
+                <input type="number" id="current" placeholder="Enter current in amperes" style="display: none;">
+            </div>
             
-            <button onclick="calculateCurrent()">Calculate Current</button>
+            <button onclick="calculateOhmsLaw()" data-en="Calculate" data-de="Berechnen">Calculate</button>
             
             <div id="result"></div>
         </div>
     </section>
 
     <section id="circuits">
-        <h2>Types of Circuits</h2>
-        <p><strong>Series Circuit:</strong> Components connected end-to-end; current is the same through all, but voltage divides.</p>
-        <p><strong>Parallel Circuit:</strong> Components connected across the same voltage; voltage is the same, but current divides.</p>
+        <h2 data-en="Types of Circuits" data-de="Arten von Schaltkreisen">Types of Circuits</h2>
+        <p data-en="<strong>Series Circuit:</strong> Components connected end-to-end; current is the same through all, but voltage divides." data-de="<strong>Reihenschaltung:</strong> Komponenten Ende-zu-Ende verbunden; Strom ist überall gleich, aber Spannung teilt sich auf."><strong>Series Circuit:</strong> Components connected end-to-end; current is the same through all, but voltage divides.</p>
+        <p data-en="<strong>Parallel Circuit:</strong> Components connected across the same voltage; voltage is the same, but current divides." data-de="<strong>Parallelschaltung:</strong> Komponenten über dieselbe Spannung verbunden; Spannung ist gleich, aber Strom teilt sich auf."><strong>Parallel Circuit:</strong> Components connected across the same voltage; voltage is the same, but current divides.</p>
         <div class="diagram">
-            <!-- SVG for series circuit -->
+            <!-- Improved SVG for series circuit with labels -->
             <svg width="300" height="100" viewBox="0 0 300 100">
                 <line x1="50" y1="50" x2="100" y2="50" stroke="black" stroke-width="2" />
                 <circle cx="125" cy="50" r="20" fill="none" stroke="black" />
-                <circle cx="175" cy="50" r="20" fill="none" stroke="black" />
-                <line x1="150" y1="50" x2="200" y2="50" stroke="black" stroke-width="2" />
+                <text x="125" y="55" text-anchor="middle" data-en="Lamp 1" data-de="Lampe 1">Lamp 1</text>
+                <line x1="145" y1="50" x2="155" y2="50" stroke="black" stroke-width="2" />
+                <circle cx="180" cy="50" r="20" fill="none" stroke="black" />
+                <text x="180" y="55" text-anchor="middle" data-en="Lamp 2" data-de="Lampe 2">Lamp 2</text>
                 <line x1="200" y1="50" x2="250" y2="50" stroke="black" stroke-width="2" />
+                <text x="150" y="20" text-anchor="middle" data-en="Same Current Throughout" data-de="Gleicher Strom überall">Same Current Throughout</text>
             </svg>
-            <p>Diagram: Series Circuit (Two lamps in series)</p>
+            <p data-en="Diagram: Series Circuit (Two lamps in series)" data-de="Diagramm: Reihenschaltung (Zwei Lampen in Serie)">Diagram: Series Circuit (Two lamps in series)</p>
+        </div>
+        <div class="diagram">
+            <!-- New SVG for a slightly more complex circuit: Series-parallel combination -->
+            <svg width="400" height="200" viewBox="0 0 400 200">
+                <!-- Battery -->
+                <rect x="50" y="80" width="40" height="40" fill="none" stroke="black" />
+                <text x="70" y="105" text-anchor="middle" data-en="Battery" data-de="Batterie">Battery</text>
+                
+                <!-- Wire to first resistor (series) -->
+                <line x1="90" y1="100" x2="120" y2="100" stroke="black" stroke-width="2" />
+                
+                <!-- Resistor 1 (series) -->
+                <rect x="120" y="90" width="40" height="20" fill="none" stroke="black" />
+                <text x="140" y="105" text-anchor="middle" data-en="R1" data-de="R1">R1</text>
+                
+                <!-- Branch for parallel -->
+                <line x1="160" y1="100" x2="200" y2="100" stroke="black" stroke-width="2" />
+                <line x1="200" y1="100" x2="200" y2="50" stroke="black" stroke-width="2" />
+                <line x1="200" y1="100" x2="200" y2="150" stroke="black" stroke-width="2" />
+                
+                <!-- Upper parallel: Lamp -->
+                <circle cx="250" cy="50" r="20" fill="none" stroke="black" />
+                <text x="250" y="55" text-anchor="middle" data-en="Lamp" data-de="Lampe">Lamp</text>
+                
+                <!-- Lower parallel: Resistor 2 -->
+                <rect x="230" y="140" width="40" height="20" fill="none" stroke="black" />
+                <text x="250" y="155" text-anchor="middle" data-en="R2" data-de="R2">R2</text>
+                
+                <!-- Rejoin wires -->
+                <line x1="270" y1="50" x2="300" y2="50" stroke="black" stroke-width="2" />
+                <line x1="270" y1="150" x2="300" y2="150" stroke="black" stroke-width="2" />
+                <line x1="300" y1="50" x2="300" y2="150" stroke="black" stroke-width="2" />
+                <line x1="300" y1="100" x2="350" y2="100" stroke="black" stroke-width="2" />
+                
+                <text x="225" y="30" text-anchor="middle" data-en="Parallel Branch" data-de="Paralleler Zweig">Parallel Branch</text>
+            </svg>
+            <p data-en="Diagram: More Complex Circuit (Series resistor with parallel lamp and resistor)" data-de="Diagramm: Komplexerer Schaltkreis (Reihenwiderstand mit paralleler Lampe und Widerstand)">Diagram: More Complex Circuit (Series resistor with parallel lamp and resistor)</p>
         </div>
     </section>
 
     <section id="simulation">
-        <h2>Simple Electron Flow Simulation</h2>
-        <p>Watch electrons (red dots) flowing through a wire, representing electric current.</p>
+        <h2 data-en="Simple Electron Flow Simulation" data-de="Einfache Elektronenfluss-Simulation">Simple Electron Flow Simulation</h2>
+        <p data-en="Watch electrons (red dots) flowing through a wire, representing electric current." data-de="Beobachten Sie Elektronen (rote Punkte), die durch einen Draht fließen und elektrischen Strom darstellen.">Watch electrons (red dots) flowing through a wire, representing electric current.</p>
         <div class="simulation">
             <div class="electron" style="top: 20px; animation-delay: 0s;"></div>
             <div class="electron" style="top: 50px; animation-delay: 0.5s;"></div>
@@ -178,16 +246,92 @@
     </section>
 
     <script>
-        function calculateCurrent() {
-            const voltage = parseFloat(document.getElementById('voltage').value);
-            const resistance = parseFloat(document.getElementById('resistance').value);
-            if (isNaN(voltage) || isNaN(resistance) || resistance === 0) {
-                document.getElementById('result').innerText = 'Please enter valid voltage and resistance (resistance cannot be zero).';
-                return;
-            }
-            const current = voltage / resistance;
-            document.getElementById('result').innerText = `Current (I) = ${current.toFixed(2)} Amperes`;
+        function changeLanguage(lang) {
+            document.querySelectorAll('[data-en], [data-de]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${lang}`) || el.innerHTML;
+            });
+            // Update select options
+            document.querySelectorAll('#calculate-what option').forEach(opt => {
+                opt.textContent = opt.getAttribute(`data-${lang}`);
+            });
+            // Update button text
+            document.querySelector('button[onclick="calculateOhmsLaw()"]').textContent = lang === 'en' ? 'Calculate' : 'Berechnen';
+            updateInputs(); // Refresh labels
         }
+
+        function updateInputs() {
+            const calcWhat = document.getElementById('calculate-what').value;
+            const lang = document.getElementById('language-select').value;
+            const voltageLabel = document.querySelector('label[for="voltage"]');
+            const resistanceLabel = document.querySelector('label[for="resistance"]');
+            const currentLabel = document.querySelector('label[for="current"]');
+            const voltageInput = document.getElementById('voltage');
+            const resistanceInput = document.getElementById('resistance');
+            const currentInput = document.getElementById('current');
+
+            voltageLabel.style.display = '';
+            resistanceLabel.style.display = '';
+            currentLabel.style.display = '';
+            voltageInput.style.display = '';
+            resistanceInput.style.display = '';
+            currentInput.style.display = '';
+
+            if (calcWhat === 'current') {
+                currentLabel.style.display = 'none';
+                currentInput.style.display = 'none';
+            } else if (calcWhat === 'voltage') {
+                voltageLabel.style.display = 'none';
+                voltageInput.style.display = 'none';
+            } else if (calcWhat === 'resistance') {
+                resistanceLabel.style.display = 'none';
+                resistanceInput.style.display = 'none';
+            }
+
+            // Update labels based on lang
+            voltageLabel.innerHTML = lang === 'en' ? 'Voltage (V):' : 'Spannung (V):';
+            resistanceLabel.innerHTML = lang === 'en' ? 'Resistance (R):' : 'Widerstand (R):';
+            currentLabel.innerHTML = lang === 'en' ? 'Current (I):' : 'Strom (I):';
+        }
+
+        function calculateOhmsLaw() {
+            const calcWhat = document.getElementById('calculate-what').value;
+            const lang = document.getElementById('language-select').value;
+            let resultText = '';
+            let errorMsg = lang === 'en' ? 'Please enter valid numbers (cannot be zero where division occurs).' : 'Bitte gültige Zahlen eingeben (kann nicht null sein, wo Division stattfindet).';
+
+            if (calcWhat === 'current') {
+                const voltage = parseFloat(document.getElementById('voltage').value);
+                const resistance = parseFloat(document.getElementById('resistance').value);
+                if (isNaN(voltage) || isNaN(resistance) || resistance === 0) {
+                    document.getElementById('result').innerText = errorMsg;
+                    return;
+                }
+                const current = voltage / resistance;
+                resultText = lang === 'en' ? `Current (I) = ${current.toFixed(2)} Amperes` : `Strom (I) = ${current.toFixed(2)} Ampere`;
+            } else if (calcWhat === 'voltage') {
+                const current = parseFloat(document.getElementById('current').value);
+                const resistance = parseFloat(document.getElementById('resistance').value);
+                if (isNaN(current) || isNaN(resistance)) {
+                    document.getElementById('result').innerText = errorMsg;
+                    return;
+                }
+                const voltage = current * resistance;
+                resultText = lang === 'en' ? `Voltage (V) = ${voltage.toFixed(2)} Volts` : `Spannung (V) = ${voltage.toFixed(2)} Volt`;
+            } else if (calcWhat === 'resistance') {
+                const voltage = parseFloat(document.getElementById('voltage').value);
+                const current = parseFloat(document.getElementById('current').value);
+                if (isNaN(voltage) || isNaN(current) || current === 0) {
+                    document.getElementById('result').innerText = errorMsg;
+                    return;
+                }
+                const resistance = voltage / current;
+                resultText = lang === 'en' ? `Resistance (R) = ${resistance.toFixed(2)} Ohms` : `Widerstand (R) = ${resistance.toFixed(2)} Ohm`;
+            }
+            document.getElementById('result').innerText = resultText;
+        }
+
+        // Initialize
+        updateInputs();
     </script>
 </body>
 </html>
